@@ -1,7 +1,7 @@
 	desc "JS/CSS Minifier"
 	def minify(files)
 		files.each do |file|
-			cmd = "java -jar lib/yuicompressor-2.4.7.jar #{file} -o #{file}"
+			cmd = "java -jar lib/yuicompressor-2.4.7.jar #{file} -o #{file}" #assuming you have the yuicompressor on your /lib folder
 			puts cmd
 			ret = system(cmd)
 			raise "Minification failed for #{file}" if !ret
@@ -13,11 +13,11 @@
 
 	  desc "minify javascript"
 	  task :minify_js do
-		minify(FileList['src/scripts/areas/**/*.js'])  #javascript file list 
+		minify(FileList['src/scripts/**/*.js'])  #javascript file list 
 	end
 
 	desc "minify css"
 		task :minify_css do
-		minify(FileList['src/themes/v1/css/**/*.css']) #css file list
+		minify(FileList['src/css/**/*.css']) #css file list
 	end
 end
